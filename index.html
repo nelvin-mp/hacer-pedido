@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido con WhatsApp</title>
+</head>
+<body>
+    <h1>Formulario de Pedido con WhatsApp</h1>
+
+    <form id="pedidoForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+
+        <label for="numero_hotel">Número del Cuarto del Hotel:</label>
+        <input type="text" id="numero_hotel" name="numero_hotel" required>
+        <br><br>
+
+        <h2>Bebidas</h2>
+        <ul>
+            <li>
+                <label for="refresco">🥤 Refresco - S/2.50</label>
+                <input type="number" id="refresco" name="refresco" min="0">
+            </li>
+            <li>
+                <label for="jugo">🥤 Jugo - S/3.00</label>
+                <input type="number" id="jugo" name="jugo" min="0">
+            </li>
+            <!-- Agrega más bebidas según tus productos disponibles -->
+        </ul>
+
+        <h2>Galletas</h2>
+        <ul>
+            <li>
+                <label for="galleta_chocolate">🍪 Galleta de Chocolate - S/1.50</label>
+                <input type="number" id="galleta_chocolate" name="galleta_chocolate" min="0">
+            </li>
+            <li>
+                <label for="galleta_avena">🍪 Galleta de Avena - S/1.00</label>
+                <input type="number" id="galleta_avena" name="galleta_avena" min="0">
+            </li>
+            <!-- Agrega más galletas según tus productos disponibles -->
+        </ul>
+
+        <h2>Comidas</h2>
+        <ul>
+            <li>
+                <label for="empanadas">🥟 Empanadas - S/2.00</label>
+                <input type="number" id="empanadas" name="empanadas" min="0">
+            </li>
+            <li>
+                <label for="sandwich">🥪 Sándwich - S/5.00</label>
+                <input type="number" id="sandwich" name="sandwich" min="0">
+            </li>
+            <!-- Agrega más comidas según tus productos disponibles -->
+        </ul>
+
+        <button type="button" onclick="generarPedido()">Enviar Pedido por WhatsApp</button>
+    </form>
+
+    <script>
+        function generarPedido() {
+            var nombre = document.getElementById('nombre').value.trim();
+            var numeroHotel = document.getElementById('numero_hotel').value.trim();
+
+            var mensajePedido = "🛒 *Pedido de " + nombre + " - Cuarto " + numeroHotel + "* 🛒\n\n";
+
+            var productos = document.querySelectorAll('input[type="number"]');
+            productos.forEach(function(producto) {
+                if (producto.value > 0) {
+                    mensajePedido += producto.previousElementSibling.textContent.trim() + " - Cantidad: " + producto.value + "\n";
+                }
+            });
+
+            var whatsappLink = "https://wa.me/51927191084?text=" + encodeURIComponent(mensajePedido);
+            window.location.href = whatsappLink;
+        }
+    </script>
+</body>
+</html>
