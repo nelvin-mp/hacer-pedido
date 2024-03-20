@@ -17,44 +17,74 @@
         <input type="text" id="numero_hotel" name="numero_hotel" required>
         <br><br>
 
-        <h2>Bebidas</h2>
+        <!-- CATEGORÍA: SHAMPOO -->
+        <h2><strong>SHAMPOO</strong></h2>
         <ul>
             <li>
-                <label for="refresco">🥤 Refresco - S/2.50</label>
-                <input type="number" id="refresco" name="refresco" min="0">
+                <label for="shampoo_hs_chico">🧴 Shampoo HS Chico - S/12.00</label>
+                <input type="number" id="shampoo_hs_chico" name="shampoo_hs_chico" min="0">
             </li>
             <li>
-                <label for="jugo">🥤 Jugo - S/3.00</label>
-                <input type="number" id="jugo" name="jugo" min="0">
+                <label for="shampoo_hs_grande">🧴 Shampoo HS Grande - S/15.00</label>
+                <input type="number" id="shampoo_hs_grande" name="shampoo_hs_grande" min="0">
             </li>
-            <!-- Agrega más bebidas según tus productos disponibles -->
+            <li>
+                <label for="shampoo_hs_mediano">🧴 Shampoo HS Mediano - S/13.50</label>
+                <input type="number" id="shampoo_hs_mediano" name="shampoo_hs_mediano" min="0">
+            </li>
+            <li>
+                <label for="shampoo_savital">🧴 Shampoo Savital - S/10.00</label>
+                <input type="number" id="shampoo_savital" name="shampoo_savital" min="0">
+            </li>
+            <li>
+                <label for="shampoo_savital_grde">🧴 Shampoo Savital Grande - S/12.00</label>
+                <input type="number" id="shampoo_savital_grde" name="shampoo_savital_grde" min="0">
+            </li>
         </ul>
 
-        <h2>Galletas</h2>
+        <!-- CATEGORÍA: BEBIDAS -->
+        <h2><strong>BEBIDAS</strong></h2>
         <ul>
             <li>
-                <label for="galleta_chocolate">🍪 Galleta de Chocolate - S/1.50</label>
-                <input type="number" id="galleta_chocolate" name="galleta_chocolate" min="0">
+                <label for="cerveza_golden">🍺 Cerveza Golden - S/8.00</label>
+                <input type="number" id="cerveza_golden" name="cerveza_golden" min="0">
             </li>
             <li>
-                <label for="galleta_avena">🍪 Galleta de Avena - S/1.00</label>
-                <input type="number" id="galleta_avena" name="galleta_avena" min="0">
+                <label for="cielo_625_ml">🥤 Cielo 625 ml - S/5.00</label>
+                <input type="number" id="cielo_625_ml" name="cielo_625_ml" min="0">
             </li>
-            <!-- Agrega más galletas según tus productos disponibles -->
+            <li>
+                <label for="cielo_1_litro">🥤 Cielo 1 Litro - S/8.00</label>
+                <input type="number" id="cielo_1_litro" name="cielo_1_litro" min="0">
+            </li>
+            <li>
+                <label for="cielo_2_5_litros">🥤 Cielo 2.5 Litros - S/12.00</label>
+                <input type="number" id="cielo_2_5_litros" name="cielo_2_5_litros" min="0">
+            </li>
+            <li>
+                <label for="coca_cola_600_ml">🥤 Coca Cola 600 ml - S/4.00</label>
+                <input type="number" id="coca_cola_600_ml" name="coca_cola_600_ml" min="0">
+            </li>
+            <li>
+                <label for="corona_extra">🍺 Corona Extra - S/10.00</label>
+                <input type="number" id="corona_extra" name="corona_extra" min="0">
+            </li>
+            <li>
+                <label for="corona_selizer_limon_toronja">🍹 Corona Selizer Limón y Toronja - S/6.00</label>
+                <input type="number" id="corona_selizer_limon_toronja" name="corona_selizer_limon_toronja" min="0">
+            </li>
+            <li>
+                <label for="cusquena_negra">🍺 Cusqueña Negra - S/8.00</label>
+                <input type="number" id="cusquena_negra" name="cusquena_negra" min="0">
+            </li>
+            <li>
+                <label for="cusquena_negro_chica">🍺 Cusqueña Negro Chica - S/6.00</label>
+                <input type="number" id="cusquena_negro_chica" name="cusquena_negro_chica" min="0">
+            </li>
         </ul>
 
-        <h2>Comidas</h2>
-        <ul>
-            <li>
-                <label for="empanadas">🥟 Empanadas - S/2.00</label>
-                <input type="number" id="empanadas" name="empanadas" min="0">
-            </li>
-            <li>
-                <label for="sandwich">🥪 Sándwich - S/5.00</label>
-                <input type="number" id="sandwich" name="sandwich" min="0">
-            </li>
-            <!-- Agrega más comidas según tus productos disponibles -->
-        </ul>
+        <!-- CATEGORÍA: OTRO -->
+        <!-- Agrega más categorías y productos según sea necesario -->
 
         <button type="button" onclick="generarPedido()">Enviar Pedido por WhatsApp</button>
     </form>
@@ -73,8 +103,10 @@
                 }
             });
 
-            var whatsappLink = "https://wa.me/51927191084?text=" + encodeURIComponent(mensajePedido);
-            window.location.href = whatsappLink;
+            var whatsappNumero = "51963866718"; // Tu número de WhatsApp
+            var whatsappMensaje = encodeURIComponent(mensajePedido);
+            var whatsappLink = "https://wa.me/" + whatsappNumero + "?text=" + whatsappMensaje;
+            window.open(whatsappLink);
         }
     </script>
 </body>
